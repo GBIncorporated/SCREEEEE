@@ -23,14 +23,16 @@ mod.extend = function()
    // Runs this creep based on its roll.
    Creep.prototype.run = function()
    {
-      let roleType = Creep.role[roleName];
+      var roleType = Creep.role[this.GetRole()
+         .name];
+      console.log(roleType);
       if (roleType != undefined)
       {
          roleType.run(this);
       }
       else
       {
-         console.log("Got an undefined role! " + roleName);
+         console.log("Got an undefined role! " + roleType);
          // Dead weight reclaim
          this.suicide();
       }
