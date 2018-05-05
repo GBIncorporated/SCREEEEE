@@ -27,18 +27,18 @@ let Activity = function()
    // Esnures this activity is valid.
    Activity.isValidActivity = function(creep)
    {
-      return false;
+      // no work in base class.
    };
 
    Activity.isValidTarget = function(target)
    {
-      false;
+      // no work in base class.
    };
 
    // picks a new target suitable for this activity
    Activity.newTarget = function(creep)
    {
-      return null;
+      // no work in base class.
    }
 
    // Runs this activity.
@@ -50,27 +50,8 @@ let Activity = function()
    // order for the creep to execute each tick, when assigned to that action
    Activity.step = function(creep)
    {
-      let target = creep.GetTarget();
-      let range = creep.pos.getRangeTo(target);
-      if (range <= this.targetRange)
-      {
-         var workResult = this.work(creep);
-         if (workResult != OK)
-         {
-            creep.SetActivity(null);
-            return;
-         }
-      }
-
-      else
-      {
-         if (target != null)
-         {
-            let error = creep.Drive(target.pos);
-         }
-      }
+      // no work in base class
    };
-
 };
 
 module.exports = Activity;

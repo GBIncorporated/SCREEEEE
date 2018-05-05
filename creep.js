@@ -25,7 +25,6 @@ mod.extend = function()
    {
       var roleType = Creep.role[this.GetRole()
          .name];
-      console.log(roleType);
       if (roleType != undefined)
       {
          roleType.run(this);

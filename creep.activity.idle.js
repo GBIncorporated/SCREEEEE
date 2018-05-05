@@ -20,19 +20,27 @@ activity.isValidTarget = function(target)
 // picks a new target suitable for this activity
 activity.newTarget = function(creep)
 {
-   // Idle has no target.
-   return null;
+   // Have the bum wonder around following other screeps
+   let target = null;
+
+   var creeps = creep.room.find(FIND_CREEPS);
+
+   if (creeps.length > 0)
+   {
+      // order them to distance from this creep
+      creeps.sort((c) => creep.pos.getRangeTo(creeps));
+      target = creeps[0];
+   }
+   // move to that creep
+   return target;
 };
 
 // order for the creep to execute each tick, when assigned to that action
 activity.step = function(creep)
 {
    creep.say("Im idle!");
-   let spawns = creep.room.GetSpawns();
-   if (spawns.length > 0)
-   {
-      let error = creep.Drive(spawns[0].pos);
-   }
+   let error = creep.Drive(creep.GetTarget()
+      .pos);
 };
 
 // Runs this activity.
