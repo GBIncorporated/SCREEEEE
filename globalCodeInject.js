@@ -144,7 +144,8 @@ global.install = () =>
       {
          idle: load("creep.activity.idle"),
          harvest: load("creep.activity.harvest"),
-         deposit: load("creep.activity.deposit")
+         deposit: load("creep.activity.deposit"),
+         upgrade: load("creep.activity.upgrade")
       }
    });
 
@@ -153,7 +154,8 @@ global.install = () =>
       role:
       {
          bum: load("creep.role.bum"),
-         miner: load("creep.role.miner")
+         miner: load("creep.role.miner"),
+         upgrader: load("creep.role.upgrader")
       }
    });
 

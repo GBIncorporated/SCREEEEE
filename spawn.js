@@ -1,7 +1,7 @@
 let mod = {};
 module.exports = mod;
 
-mod.priorityHigh = [Creep.role.miner];
+mod.priorityHigh = [Creep.role.miner, Creep.role.upgrader];
 mod.priorityLow = [];
 
 // Extension functions for the base game spawn.
@@ -41,8 +41,7 @@ mod.extend = function()
          return false;
       }
 
-      if (cost > this.room.energyAvailable ||
-         this.room.TotalRoomRoleCount(role.name) >= role.NumberPerRoom)
+      if (cost > this.room.energyAvailable)
       {
          if (cost > this.room.energyCapacityAvailable)
          {
@@ -54,7 +53,12 @@ mod.extend = function()
          return true;
       }
 
-      let result = this.create(role, parts);
+      if (this.room.TotalRoomRoleCount(role.name) < role.NumberPerRoom)
+      {
+         let result = this.create(role, parts);
+      }
+
+
       return result;
    };
 
