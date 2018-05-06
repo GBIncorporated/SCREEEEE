@@ -1,7 +1,7 @@
 let mod = {};
 module.exports = mod;
 
-mod.priorityHigh = [];
+mod.priorityHigh = [Creep.role.miner];
 mod.priorityLow = [Creep.role.bum];
 
 // Extension functions for the base game spawn.

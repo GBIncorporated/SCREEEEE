@@ -142,7 +142,9 @@ global.install = () =>
    {
       activity:
       {
-         idle: load("creep.activity.idle")
+         idle: load("creep.activity.idle"),
+         harvest: load("creep.activity.harvest"),
+         harvest: load("creep.activity.deposit")
       }
    });
 
@@ -150,7 +152,8 @@ global.install = () =>
    {
       role:
       {
-         bum: load("creep.role.bum")
+         bum: load("creep.role.bum"),
+         miner: load("creep.role.miner")
       }
    });
 
