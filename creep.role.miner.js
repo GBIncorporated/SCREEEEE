@@ -1,7 +1,7 @@
 let role = new Creep.Role();
 module.exports = role;
 role.name = "bum";
-role.parts = [MOVE, MOVE]
+role.parts = [MOVE, WORK, WORK, CARRY]
 role.activityQueue = [Creep.activity.harvest, Creep.activity.deposit, Creep.activity.idle];
 
 role.run = function(creep)
