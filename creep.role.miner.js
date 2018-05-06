@@ -1,6 +1,6 @@
 let role = new Creep.Role();
 module.exports = role;
-role.name = "bum";
+role.name = "miner";
 role.parts = [MOVE, WORK, WORK, CARRY]
 role.activityQueue = [Creep.activity.harvest, Creep.activity.deposit, Creep.activity.idle];
 
@@ -60,13 +60,11 @@ role.nextActivity = function(creep)
    for (var iActivity = 0; iActivity < role.activityQueue.length; iActivity++)
    {
       var activity = Creep.activity[role.activityQueue[iActivity].name];
-
       const validActivity = activity.isValidActivity(creep);
-      if (!validActivity)
+      if (validActivity)
       {
-         return null;
+         // have a valid activity for this creep check get next target
+         return activity;
       }
-      // have a valid activity for this creep check get next target
-      return activity;
    }
 };

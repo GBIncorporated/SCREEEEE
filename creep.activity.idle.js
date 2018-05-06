@@ -12,6 +12,7 @@ activity.isValidActivity = function(creep)
    return true
 };
 
+// Ensures this target is valid.
 activity.isValidTarget = function(target)
 {
    return true;

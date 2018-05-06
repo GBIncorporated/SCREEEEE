@@ -144,7 +144,7 @@ global.install = () =>
       {
          idle: load("creep.activity.idle"),
          harvest: load("creep.activity.harvest"),
-         harvest: load("creep.activity.deposit")
+         deposit: load("creep.activity.deposit")
       }
    });
 
