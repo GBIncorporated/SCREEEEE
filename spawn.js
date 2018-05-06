@@ -41,7 +41,8 @@ mod.extend = function()
          return false;
       }
 
-      if (cost > this.room.energyAvailable)
+      if (cost > this.room.energyAvailable ||
+         this.room.TotalRoomRoleCount(role.name) >= role.NumberPerRoom)
       {
          if (cost > this.room.energyCapacityAvailable)
          {

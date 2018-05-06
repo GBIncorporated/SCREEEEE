@@ -3,6 +3,7 @@ module.exports = role;
 role.name = "bum";
 role.parts = [MOVE, MOVE]
 role.activityQueue = [Creep.activity.idle];
+role.NumberPerRoom = 0;
 
 role.run = function(creep)
 {
