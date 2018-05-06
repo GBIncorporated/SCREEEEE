@@ -2,7 +2,7 @@ let mod = {};
 module.exports = mod;
 
 mod.priorityHigh = [];
-mod.priorityLow = [];
+mod.priorityLow = [Creep.role.bum];
 
 // Extension functions for the base game spawn.
 mod.extend = function()
@@ -17,12 +17,46 @@ mod.extend = function()
          return;
       }
 
-      var role = Creep.role.bum;
-      var parts = [WORK, MOVE, CARRY];
+      this.spawnByQueue(Spawn.priorityHigh);
+      this.spawnByQueue(Spawn.priorityLow);
+   }
+
+   // Spawns creeps based on the two priority queues in order
+   Spawn.prototype.spawnByQueue = function(queue)
+   {
+      if (!queue || queue.length == 0) return null;
+      let role = queue.shift();
+      let cost = 0;
+      // Get the parts needed for behavior
+      let parts = role.parts;
+      for (let part of parts)
+      {
+         cost += BODYPART_COSTS[part];
+      }
+
+      // no parts
+      if (cost === 0)
+      {
+         console.log('Zero parts body creep queued. Removed.');
+         return false;
+      }
+
+      if (cost > this.room.energyAvailable)
+      {
+         if (cost > this.room.energyCapacityAvailable)
+         {
+            console.log("Queued creep greater then room capacity. " + JSON.stringify(role))
+            return false;
+         }
+         // place back on queue to wait for enough energy.
+         queue.unshift(role);
+         return true;
+      }
 
       let result = this.create(role, parts);
       return result;
-   }
+   };
+
 
    /**
     * Creates a creep based on a role an a body.
