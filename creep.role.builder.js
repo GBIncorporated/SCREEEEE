@@ -1,12 +1,13 @@
 let role = new Creep.Role();
 module.exports = role;
-role.name = "upgrader";
+role.name = "builder";
 role.parts = [MOVE, WORK, WORK, CARRY]
-role.activityQueue = [Creep.activity.harvest, Creep.activity.upgrade, Creep.activity.idle];
-role.NumberPerRoom = 4;
+role.activityQueue = [Creep.activity.harvest, Creep.activity.build, Creep.activity.idle];
+role.NumberPerRoom = 1;
 
 role.run = function(creep)
 {
+
    let target;
    let activity = creep.GetActivity();
    // Set new activity
@@ -15,7 +16,7 @@ role.run = function(creep)
       activity = this.nextActivity(creep);
       if (activity == null)
       {
-         console.log("Null activity");
+         // console.log("Null activity");
       }
       creep.SetActivity(activity);
    }

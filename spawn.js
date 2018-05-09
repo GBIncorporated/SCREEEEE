@@ -1,7 +1,7 @@
 let mod = {};
 module.exports = mod;
 
-mod.priorityHigh = [Creep.role.miner, Creep.role.upgrader];
+mod.priorityHigh = [Creep.role.miner, Creep.role.upgrader, Creep.role.builder];
 mod.priorityLow = [];
 
 // Extension functions for the base game spawn.
@@ -24,6 +24,7 @@ mod.extend = function()
    // Spawns creeps based on the two priority queues in order
    Spawn.prototype.spawnByQueue = function(queue)
    {
+      let result = "";
       if (!queue || queue.length == 0) return null;
       let role = queue.shift();
       let cost = 0;
@@ -55,7 +56,7 @@ mod.extend = function()
 
       if (this.room.TotalRoomRoleCount(role.name) < role.NumberPerRoom)
       {
-         let result = this.create(role, parts);
+         result = this.create(role, parts);
       }
 
 
@@ -88,6 +89,10 @@ mod.extend = function()
          var newCreep = Game.creeps[name];
          newCreep.SetupMemory();
          newCreep.SetRole(role);
+      }
+      else
+      {
+         console.log("Failed to make creep " + role.name);
       }
       return name;
    }
