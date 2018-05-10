@@ -25,7 +25,8 @@ activity.newTarget = function(creep)
    let constructionSites = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
    target = creep.pos.findClosestByPath(constructionSites)
    return target;
-}
+};
+
 // Runs this activity.
 activity.work = function(creep)
 {

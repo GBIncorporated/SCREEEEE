@@ -3,7 +3,7 @@ module.exports = role;
 role.name = "builder";
 role.parts = [MOVE, WORK, WORK, CARRY]
 role.activityQueue = [Creep.activity.harvest, Creep.activity.build, Creep.activity.idle];
-role.NumberPerRoom = 1;
+role.NumberPerRoom = 2;
 
 role.run = function(creep)
 {
